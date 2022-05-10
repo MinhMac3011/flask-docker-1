@@ -57,20 +57,20 @@ pipeline {
             }
         }
         
-        stage('deploy') {
-            agent { node {label 'master'}}
-            steps {
-//                 withCredentials([usernamePassword(credentialsId: 'ssh-uername-passwd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-//                     sh "sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no minhmd@10.0.0.4 "
-// 					sh "'./deploy.sh'"
-//                 }
+//         stage('deploy') {
+//             agent { node {label 'master'}}
+//             steps {
+// //                 withCredentials([usernamePassword(credentialsId: 'ssh-uername-passwd', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+// //                     sh "sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no minhmd@10.0.0.4 "
+// // 					sh "'./deploy.sh'"
+// //                 }
 		    
-		    sshagent(['ssh-remote']) {
-    			// some block
-			    sh 'ssh -o StrictHostKeyChecking=no -l root 10.0.0.11 docker run -p 5000:5000 -d minhmd3011/flask-docker:latest'
-			    //sh 'docker run -p 5000:5000 -d minhmd3011/flask-docker:latest'
-		    }
-            }
-        }
+// 		    sshagent(['ssh-remote']) {
+//     			// some block
+// 			    sh 'ssh -o StrictHostKeyChecking=no -l root 10.0.0.11 docker run -p 5000:5000 -d minhmd3011/flask-docker:latest'
+// 			    //sh 'docker run -p 5000:5000 -d minhmd3011/flask-docker:latest'
+// 		    }
+//             }
+//         }
     }
 }
